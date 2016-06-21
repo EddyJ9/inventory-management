@@ -50,15 +50,5 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public void updateQuantity(int quantity){
-        this.quantity = quantity;
-    }
-
-    public void updatePrice(double price){
-        this.price = price;
-    }
-
-
-
 }
 

@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -13,8 +12,6 @@ public class Main {
         int option = 0;
 
         do {
-            inventory.showItems();
-
             switch (inventory.showMenu()) {
 
                 case 1:
@@ -24,36 +21,39 @@ public class Main {
                     item.setPrice(scanner.nextDouble());
                     System.out.println("What is the quantity of this item?");
                     item.setQuantity(scanner.nextInt());
+                    id++;
                     item.setId(id);
-                    inventory.addItem();
+                    inventory.addItem(item);
                     break;
                 case 2:
-                    System.out.println("Choose which item(s) you would like to sell.");
-                    inventory.findItem(scanner.nextLine());
-                    System.out.println("What is the quantity you would like to sell?");
+                    inventory.showItems();
+                    inventory.sellItem();
                     break;
 
                 case 3:
+                    inventory.showItems();
                     System.out.println("Please enter the item's ID you would like to remove.");
+                    inventory.removeItem();
                     break;
 
                 case 4:
+                    inventory.showItems();
                     System.out.println("Choose which item you would like to update the quantity of.");
-                    inventory.findItem(scanner.nextLine());
-                    item.updateQuantity(scanner.nextInt());
+                    inventory.updateQuantity();
                     break;
                 case 5:
+                    inventory.showItems();
                     System.out.println("Which item would you like to udpate the price to?");
-                    inventory.findItem(scanner.nextLine());
-                    item.updatePrice(scanner.nextDouble());
+                    inventory.updatePrice();
                     break;
                 case 6:
+                    option = 6;
                     System.out.println("Goodbye");
                     break;
                 default:
                     System.out.println("Command not found");
             }
-        }while(inventory.showMenu() != 6);
-            System.out.println("Thank you! System end.");
+        }while(option != 6);
+            System.out.println("System end.");
     }
 }
